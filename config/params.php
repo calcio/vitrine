@@ -1,5 +1,7 @@
 <?php
 
 return [
-    'adminEmail' => 'admin@example.com',
+    'nomeSistema' => 'Vitrine',
+    'versaoSistema' => 'versão: 0.1',
+    'adminEmail' => 'contato@vitrine.com.br',
 ];

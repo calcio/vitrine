@@ -3,14 +3,28 @@
 $params = require(__DIR__ . '/params.php');
 
 $config = [
-    'id' => 'basic',
+    'id' => 'vitrine',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'language' => 'pt-br',
+    'timezone' => 'America/Sao_Paulo',
     'components' => [
         'request' => [
-            // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'LIvbC6NRcUZBbv-kaaQBCCEBTOmt5uCc',
         ],
+        'formatter' => [
+            'class' => 'yii\il8n\yii\i18n\Formatter',
+            'dateFormat' => 'php:d/m/Y',
+            'datetimeFormat' => 'php:d/m/Y H:i:s',
+            'timeFormat' => 'php:H:i:s',
+            'decimalSeparator' => ',',
+            'thousandSeparator' => '.',
+            'currencyCode' => 'R$',
+        ],
+        // 'urlManager' => [
+        //     'enablePrettyUrl' => true,
+        //     'showScriptName' => false,
+        // ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
