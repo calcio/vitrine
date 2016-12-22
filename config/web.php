@@ -21,10 +21,10 @@ $config = [
             'thousandSeparator' => '.',
             'currencyCode' => 'R$',
         ],
-        // 'urlManager' => [
-        //     'enablePrettyUrl' => true,
-        //     'showScriptName' => false,
-        // ],
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+        ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
