@@ -12,7 +12,7 @@ class m170104_184151_users extends Migration
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
 
-        $this->createTable('Users', [
+        $this->createTable('users', [
             'id' => $this->primaryKey(),
             'username' => $this->string()->notNull()->unique(),
             'authKey' => $this->string(32)->notNull(),
@@ -24,11 +24,11 @@ class m170104_184151_users extends Migration
             'updated_at' => $this->integer()->notNull(),
         ], $tableOptions);
 
-        $this->insert('Users', [
-            'username' => 'calcionit',
+        $this->insert('users', [
+            'username' => 'admin',
             'authKey' => Yii::$app->security->generateRandomString(),
-            'passwordHash' => Yii::$app->getSecurity()->generatePasswordHash('metaleiro'),
-            'email' => 'calcionit@gmail.com',
+            'passwordHash' => Yii::$app->getSecurity()->generatePasswordHash('admin'),
+            'email' => 'admin@mail.com',
             'status' => '10',
         ]);
     }
