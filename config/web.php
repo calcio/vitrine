@@ -13,7 +13,6 @@ $config = [
             'cookieValidationKey' => 'LIvbC6NRcUZBbv-kaaQBCCEBTOmt5uCc',
         ],
         'formatter' => [
-            'class' => 'yii\il8n\yii\i18n\Formatter',
             'dateFormat' => 'php:d/m/Y',
             'datetimeFormat' => 'php:d/m/Y H:i:s',
             'timeFormat' => 'php:H:i:s',
