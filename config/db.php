@@ -3,7 +3,7 @@
 return [
     'class' => 'yii\db\Connection',
     'dsn' => 'mysql:host=localhost;dbname=vitrine',
-    'username' => 'root',
-    'password' => 'BdLnx#1404',
+    'username' => 'meetup',
+    'password' => 'meetup',
     'charset' => 'utf8',
 ];
