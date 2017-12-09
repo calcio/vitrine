@@ -14,3 +14,5 @@ Projeto da série Iniciando uma aplicação Yii do Medium.
 [Migrations – Parte 2 Yii2](https://medium.com/@calcionit/migrations-no-yii-framework-2-parte-2-b5080807b01d#.owpp8yi89)
 
 [Gii](https://medium.com/@calcionit/gii-441e6a6b3945)
+
+[Criando módulos com o Gii](https://medium.com/@calcionit/criando-m%C3%B3dulos-com-o-gii-353a48fee98)

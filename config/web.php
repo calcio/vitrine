@@ -8,6 +8,11 @@ $config = [
     'bootstrap' => ['log'],
     'language' => 'pt-br',
     'timezone' => 'America/Sao_Paulo',
+    'modules' => [
+        'admin' => [
+            'class' => 'app\modules\admin\Admin',
+        ],
+    ],
     'components' => [
         'request' => [
             'cookieValidationKey' => 'LIvbC6NRcUZBbv-kaaQBCCEBTOmt5uCc',
