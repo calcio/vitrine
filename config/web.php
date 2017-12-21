@@ -11,6 +11,7 @@ $config = [
     'modules' => [
         'admin' => [
             'class' => 'app\modules\admin\Admin',
+            'layout' => '@app/views/layouts/admin',
         ],
     ],
     'components' => [

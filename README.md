@@ -16,3 +16,5 @@ Projeto da série Iniciando uma aplicação Yii do Medium.
 [Gii](https://medium.com/@calcionit/gii-441e6a6b3945)
 
 [Criando módulos com o Gii](https://medium.com/@calcionit/criando-m%C3%B3dulos-com-o-gii-353a48fee98)
+
+[Modificando template e layout do Módulo Admin](https://medium.com/@calcionit/modificando-template-e-layout-do-m%C3%B3dulo-admin-b3bae2988aa3)
