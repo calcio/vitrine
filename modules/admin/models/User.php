@@ -15,7 +15,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     public static function tableName()
     {
-        return '{{%Users}}';
+        return '{{%users}}';
     }
 
     /**
@@ -199,3 +199,4 @@ class User extends ActiveRecord implements IdentityInterface
 
         return $user->passwordResetToken;
     }
+}

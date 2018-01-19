@@ -34,7 +34,20 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            /**
+            * Call the model will implement IdentityInterface interface
+            * and authenticate methods.
+            * ==============================================================
+            * Chama o model que ira implementar a interface IdentityInterface 
+            * e os métodos de autenticação.
+            */
+            'identityClass' => 'app\modules\admin\models\User',
+            /**
+            * It's responsibly to define the default route (URL) login
+            * ==============================================================
+            * É responsável por definir a rota (URL) padrão de login
+            */
+            'loginUrl' => ['admin/default/index'],
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [
