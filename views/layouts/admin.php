@@ -45,7 +45,7 @@ AdminAsset::register($this);
     ];
 
     if (!Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => '<span class="glyphicon glyphicon-dashboard"></span> Dashboard', 'url' => ['default/index']];
+        $menuItems[] = ['label' => '<span class="glyphicon glyphicon-dashboard"></span> Dashboard', 'url' => ['default/dashboard']];
         $menuItems[] = ['label' => '<span class="glyphicon glyphicon-info-sign"></span> About', 'url' => ['about/index']];
         $menuItems[] = [
             'label' => '<span class="glyphicon glyphicon-user"></span> User',
