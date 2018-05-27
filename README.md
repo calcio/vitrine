@@ -20,3 +20,5 @@ Projeto da série Iniciando uma aplicação Yii do Medium.
 [Modificando template e layout do Módulo Admin](https://medium.com/@calcionit/modificando-template-e-layout-do-m%C3%B3dulo-admin-b3bae2988aa3)
 
 [Integrando a autenticação com o banco](https://medium.com/@calcionit/integrando-a-autentica%C3%A7%C3%A3o-com-o-banco-c1e26423b97f)
+
+[Admin - Voltando ao Gii (CRUD) — Parte 1!](https://medium.com/@calcionit/admin-voltando-ao-gii-crud-parte-1-ff5f54aa7530)
