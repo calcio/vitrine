@@ -27,7 +27,7 @@ AdminAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'My portfolio (Admin)',
+        'brandLabel' => 'Vitrine (Admin)',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -46,19 +46,34 @@ AdminAsset::register($this);
 
     if (!Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => '<span class="glyphicon glyphicon-dashboard"></span> Dashboard', 'url' => ['default/dashboard']];
-        $menuItems[] = ['label' => '<span class="glyphicon glyphicon-info-sign"></span> About', 'url' => ['about/index']];
         $menuItems[] = [
-            'label' => '<span class="glyphicon glyphicon-user"></span> User',
-            'url' => ['#'],
+            'label' => '<span class="glyphicon glyphicon-wrench"></span> Tools',
+            'url' => ['/#'],
             'options' => ['class' => 'dropdown'],
             'template' => '<a href="{url}" class="href_class">{label}</a>',
             'items' => [
-                ['label' => '<span class="glyphicon glyphicon-plus"></span> New', 'url' => ['user/signup'],],
-                ['label' => '<span class="glyphicon glyphicon-list"></span> List', 'url' => ['user/index'],],
+                ['label' => '<span class="glyphicon glyphicon-info-sign"></span> About', 'url' => ['about/index']],
+
+                '<li role="separator" class="divider"></li>',
+                ['label' => '<span class="glyphicon glyphicon-user"></span> USERS'],
+                ['label' => '&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-plus"></span> Add user', 'url' => ['user/create'],],
+                ['label' => '&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-list"></span> List user', 'url' => ['user/index'],],
+
+                '<li role="separator" class="divider"></li>',
+                ['label' => '<span class="glyphicon glyphicon-shopping-cart"></span> PRODUCTS'],
+                ['label' => '&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-plus"></span> Add product', 'url' => ['product/create'],],
+                ['label' => '&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-list"></span> List product', 'url' => ['product/index'],],
+
+                '<li role="separator" class="divider"></li>',
+                ['label' => '<span class="glyphicon glyphicon-tags"></span> CATEGORIES'],
+                ['label' => '&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-plus"></span> Add category', 'url' => ['category/create'],],
+                ['label' => '&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-list"></span> List category', 'url' => ['category/index'],],
+                
+                '<li role="separator" class="divider"></li>',
             ]
         ];
         $menuItems[] = [
-            'label' => '<span class="glyphicon glyphicon-lock"></span> Logout (' . Yii::$app->user->identity->username . ')',
+            'label' => '<span class="glyphicon glyphicon-log-out"></span> Logout (' . Yii::$app->user->identity->username . ')',
             'url' => ['default/logout'],
             'linkOptions' => ['data-method' => 'post']
         ];

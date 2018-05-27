@@ -8,6 +8,20 @@ use \yii\web\IdentityInterface;
 use \yii\base\NotSupportedException;
 use \yii\behaviors\TimestampBehavior;
 
+/**
+ * This is the model class for table "{{%users}}".
+ *
+ * @property integer $id
+ * @property string $username
+ * @property string $authKey
+ * @property string $passwordHash
+ * @property string $passwordResetToken
+ * @property string $email
+ * @property integer $status
+ * @property integer $created_at
+ * @property integer $updated_at
+ */
+
 class User extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
@@ -34,8 +48,33 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
+            [['username', 'authKey', 'passwordHash', 'email', 'created_at', 'updated_at'], 'required'],
+            [['status', 'created_at', 'updated_at'], 'integer'],
+            [['username', 'passwordHash', 'passwordResetToken', 'email'], 'string', 'max' => 255],
+            [['authKey'], 'string', 'max' => 32],
+            [['username'], 'unique'],
+            [['email'], 'unique'],
+            [['passwordResetToken'], 'unique'],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => Yii::t('app', 'ID'),
+            'username' => Yii::t('app', 'Username'),
+            'authKey' => Yii::t('app', 'Auth Key'),
+            'passwordHash' => Yii::t('app', 'Password Hash'),
+            'passwordResetToken' => Yii::t('app', 'Password Reset Token'),
+            'email' => Yii::t('app', 'Email'),
+            'status' => Yii::t('app', 'Status'),
+            'created_at' => Yii::t('app', 'Created At'),
+            'updated_at' => Yii::t('app', 'Updated At'),
         ];
     }
 

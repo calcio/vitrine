@@ -6,6 +6,10 @@ $config = [
     'id' => 'vitrine',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'aliases' => [
+        '@bower' => '@vendor/bower-asset',
+        '@npm'   => '@vendor/npm-asset',
+    ],
     'language' => 'pt-br',
     'timezone' => 'America/Sao_Paulo',
     'modules' => [
@@ -19,12 +23,13 @@ $config = [
             'cookieValidationKey' => 'LIvbC6NRcUZBbv-kaaQBCCEBTOmt5uCc',
         ],
         'formatter' => [
+            'class' => 'app\components\formatters\BrazilianFormatter',
             'dateFormat' => 'php:d/m/Y',
             'datetimeFormat' => 'php:d/m/Y H:i:s',
             'timeFormat' => 'php:H:i:s',
             'decimalSeparator' => ',',
             'thousandSeparator' => '.',
-            'currencyCode' => 'R$',
+            'currencyCode' => 'R$ ',
         ],
         'urlManager' => [
             'enablePrettyUrl' => true,

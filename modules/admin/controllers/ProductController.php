@@ -1,10 +1,11 @@
 <?php
 
-namespace app\controllers;
+namespace app\modules\admin\controllers;
 
 use Yii;
-use app\models\Product;
-use app\models\ProductSearch;
+use app\modules\admin\models\Product;
+use app\modules\admin\models\Category;
+use app\modules\admin\models\ProductSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -28,7 +29,7 @@ class ProductController extends Controller
             ],
         ];
     }
-
+    
     /**
      * Lists all Product models.
      * @return mixed
@@ -37,10 +38,12 @@ class ProductController extends Controller
     {
         $searchModel = new ProductSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $category = new Category();
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'listCategories' => $category->getAllCategoriesAsArray(),
         ]);
     }
 
@@ -67,11 +70,14 @@ class ProductController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
         }
+
+        $category = new Category();
+
+        return $this->render('create', [
+            'model' => $model,
+            'listCategories' => $category->getAllCategoriesAsArray(),
+        ]);
     }
 
     /**
@@ -86,11 +92,14 @@ class ProductController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
         }
+
+        $category = new Category();
+        
+        return $this->render('update', [
+            'model' => $model,
+            'listCategories' => $category->getAllCategoriesAsArray(),
+        ]);
     }
 
     /**
@@ -117,8 +126,8 @@ class ProductController extends Controller
     {
         if (($model = Product::findOne($id)) !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
         }
+        
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

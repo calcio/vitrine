@@ -1,16 +1,16 @@
 <?php
 
-namespace app\models;
+namespace app\modules\admin\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Category;
+use app\modules\admin\models\User;
 
 /**
- * CategorySearch represents the model behind the search form about `app\models\Category`.
+ * UserSearch represents the model behind the search form about `app\modules\admin\models\User`.
  */
-class CategorySearch extends Category
+class UserSearch extends User
 {
     /**
      * @inheritdoc
@@ -19,7 +19,7 @@ class CategorySearch extends Category
     {
         return [
             [['id', 'status', 'created_at', 'updated_at'], 'integer'],
-            [['name'], 'safe'],
+            [['username', 'authKey', 'passwordHash', 'passwordResetToken', 'email'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class CategorySearch extends Category
      */
     public function search($params)
     {
-        $query = Category::find();
+        $query = User::find();
 
         // add conditions that should always apply here
 
@@ -65,7 +65,11 @@ class CategorySearch extends Category
             'updated_at' => $this->updated_at,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name]);
+        $query->andFilterWhere(['like', 'username', $this->username])
+            ->andFilterWhere(['like', 'authKey', $this->authKey])
+            ->andFilterWhere(['like', 'passwordHash', $this->passwordHash])
+            ->andFilterWhere(['like', 'passwordResetToken', $this->passwordResetToken])
+            ->andFilterWhere(['like', 'email', $this->email]);
 
         return $dataProvider;
     }

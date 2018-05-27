@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace app\modules\admin\models;
 
 use Yii;
 
@@ -22,7 +22,7 @@ class ProductImage extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'product_images';
+        return '{{%product_images}}';
     }
 
     /**
@@ -45,10 +45,10 @@ class ProductImage extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'product_id' => 'Product ID',
-            'image_path' => 'Image Path',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'product_id' => Yii::t('app', 'Product ID'),
+            'image_path' => Yii::t('app', 'Image Path'),
+            'created_at' => Yii::t('app', 'Created At'),
+            'updated_at' => Yii::t('app', 'Updated At'),
         ];
     }
 
@@ -57,6 +57,6 @@ class ProductImage extends \yii\db\ActiveRecord
      */
     public function getProduct()
     {
-        return $this->hasOne(Products::className(), ['id' => 'product_id']);
+        return $this->hasOne(Product::className(), ['id' => 'product_id']);
     }
 }

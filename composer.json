@@ -17,7 +17,10 @@
         "php": ">=7.0.1",
         "yiisoft/yii2": "~2.0",
         "yiisoft/yii2-bootstrap": "*",
-        "yiisoft/yii2-swiftmailer": "*"
+        "bower-asset/bootstrap": "^3.3",
+        "npm-asset/jquery": "^2.2",
+        "yiisoft/yii2-swiftmailer": "*",
+        "yiisoft/yii2-jui": "^2.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0",
@@ -28,6 +31,12 @@
         "codeception/verify": "~0.3.1",
         "codeception/specify": "~0.4.3"
     },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
     "config": {
         "process-timeout": 1800
     },

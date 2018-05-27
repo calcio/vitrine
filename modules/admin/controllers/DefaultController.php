@@ -20,13 +20,8 @@ class DefaultController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['index', 'logout', 'dashboard'],
+                'only' => ['logout', 'dashboard'],
                 'rules' => [
-                    [
-                        'actions' => ['index'],
-                        'allow' => true,
-                        'roles' => ['?'],
-                    ],
                     [
                         'actions' => ['logout', 'dashboard'],
                         'allow' => true,
@@ -50,13 +45,13 @@ class DefaultController extends Controller
     public function actionIndex()
     {
         if (!Yii::$app->user->isGuest) {
-            return $this->render('dashboard');
+            return $this->redirect(['default/dashboard']);
         }
 
         $model = new LoginForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->render('dashboard');
+            return $this->redirect(['default/dashboard']);
         }
 
         return $this->render('index', ['model' => $model]);
