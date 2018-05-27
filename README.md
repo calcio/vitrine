@@ -1,7 +1,18 @@
 # vitrine
 
-Projeto da série Iniciando uma aplicação Yii do Medium.
-============================
+## Como baixar e utilizar esse projeto
+
++ Clone o projeto pela url (https://github.com/Calcio/vitrine.git) - Execute o comando git colne https://github.com/Calcio/vitrine.git no diretório onde pretende executar a aplicação;
++ Após o clone do projeto, acessa o diretório criado (vitrine) e rode o comando  _composer install_ para instalar todas as dependências necessárias;
++ Em seu SGDB de preferência crie um banco com o nome *vitrine*;
++ Edite o arquivo _vitrine/config/db.php_ e use suas credenciais (login e senha) do seu MySQL;
++ Ainda dentro do diretório *vitrine* execute o comando: _yii migrate_, esse comando irá criar todas as tabelas necessárias do projeto.
+
+
+> OBS: O ideal é que leia todos os artigos desde o início para estudar o framework.
+> O login e senha padrão do painel administrativo é admin e admin.
+
+## Projeto da série Iniciando uma aplicação Yii do Medium.
 
 [Entendendo o Yii2](https://medium.com/@calcionit/entendendo-o-yii2-49da4a5f965c#.zalvb9ize)
 
