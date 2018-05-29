@@ -32,4 +32,7 @@
 
 [Integrando a autenticação com o banco](https://medium.com/@calcionit/integrando-a-autentica%C3%A7%C3%A3o-com-o-banco-c1e26423b97f)
 
-[Admin - Voltando ao Gii (CRUD) — Parte 1!](https://medium.com/@calcionit/admin-voltando-ao-gii-crud-parte-1-ff5f54aa7530)
+[Admin - Voltando ao Gii (CRUD) — Parte 1!](https://medium.com/@calcionit/
+admin-voltando-ao-gii-crud-parte-1-ff5f54aa7530)
+
+[Admin - Voltando ao Gii (CRUD) — Parte 2!](https://medium.com/@calcionit/admin-voltando-ao-gii-crud-parte-2-f0455f4e847d)
