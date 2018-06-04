@@ -20,8 +20,8 @@ class m170104_184151_users extends Migration
             'passwordResetToken' => $this->string()->unique(),
             'email' => $this->string()->notNull()->unique(),
             'status' => $this->smallInteger()->notNull()->defaultValue(10),
-            'created_at' => $this->integer()->notNull(),
-            'updated_at' => $this->integer()->notNull(),
+            'created_at' => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP')->notNull(),
+            'updated_at' => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP')->notNull(),
         ], $tableOptions);
 
         $this->insert('users', [
@@ -29,7 +29,6 @@ class m170104_184151_users extends Migration
             'authKey' => Yii::$app->security->generateRandomString(),
             'passwordHash' => Yii::$app->getSecurity()->generatePasswordHash('admin'),
             'email' => 'admin@mail.com',
-            'status' => '10',
         ]);
     }
 

@@ -1,0 +1,50 @@
+version: '3.6'
+services:
+    vitrine-php:
+        image: yiisoftware/yii2-php:7.1-apache
+        container_name: vitrine-php
+        volumes:
+            - ~/.composer-docker/cache:/root/.composer/cache:delegated
+            - ./:/app:delegated
+        ports:
+            - '8000:80'
+        networks:
+            - vitrine-network
+        depends_on:
+            - vitrine-mysql
+
+    vitrine-mysql:
+        image: mysql:5.7
+        container_name: vitrine-mysql
+        restart: always
+        environment:
+            - MYSQL_ROOT_PASSWORD=vitrineMaster
+            - MYSQL_USER=meetup
+            - MYSQL_PASSWORD=meetup
+            - MYSQL_DATABASE=vitrine
+        ports:
+            - "8001:3306"
+        networks:
+            - vitrine-network
+        volumes:
+            - ./data:/var/lib/mysql
+
+    vitrine-phpmyadmin:
+        image: phpmyadmin/phpmyadmin:4.7
+        container_name: vitrine-phpmyadmin
+        ports:
+            - '8002:80'
+            - '443:443'
+        networks:
+            - vitrine-network
+        environment:
+            - PMA_ARBITRARY=1
+            - PMA_HOST=vitrine-mysql
+        depends_on:
+            - vitrine-mysql
+        volumes:
+            - ./data:/var/lib/mysql
+
+networks:
+    vitrine-network:
+        driver: bridge

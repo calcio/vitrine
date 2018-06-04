@@ -9,8 +9,24 @@
 + Ainda dentro do diretório *vitrine* execute o comando: _yii migrate_, esse comando irá criar todas as tabelas necessárias do projeto.
 
 
+## Como baixar e utilizar esse projeto usando o Docker
+Mais uma novidade no projeto, agora pode baixar via Docker.
+*OBS: Para essa opção precisa do Docker e Docker Compose instalado.*
+
++ Clone o projeto pela url (https://github.com/Calcio/vitrine.git) - Execute o comando git colne https://github.com/Calcio/vitrine.git no diretório onde pretende executar a aplicação;
++ Após o clone do projeto, acessa o diretório criado (vitrine) e rode o comando _docker-compose up -d_ aguarde o download
+das dependências e os containers subirem
++ Entre no container com o comando _docker exec -it vitrine-php bash_ e verá o código ASCII *Yiiframework*
++ Rode o comando  _composer install_ para instalar todas as dependências necessárias;
++ Execute o comando: _yii migrate_, esse comando irá criar todas as tabelas necessárias do projeto.
+
+Em ambos os casos pode ser que seja necessário dar permissão de escrita em algum diretório do projeto, faça isso
+conforme os erros de escritas forem aparecendo.
+
+=====================================================================================
 > OBS: O ideal é que leia todos os artigos desde o início para estudar o framework.
 > O login e senha padrão do painel administrativo é admin e admin.
+=====================================================================================
 
 ## Projeto da série Iniciando uma aplicação Yii do Medium.
 
