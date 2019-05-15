@@ -14,7 +14,7 @@ use app\modules\admin\models\LoginForm;
  */
 class DefaultController extends Controller
 {
-    
+
     public function behaviors()
     {
         return [

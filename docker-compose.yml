@@ -16,7 +16,7 @@ services:
     vitrine-mysql:
         image: mysql:5.7
         container_name: vitrine-mysql
-        restart: always
+        # restart: always
         environment:
             - MYSQL_ROOT_PASSWORD=vitrineMaster
             - MYSQL_USER=meetup

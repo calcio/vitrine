@@ -43,7 +43,7 @@ $config = [
             * Call the model will implement IdentityInterface interface
             * and authenticate methods.
             * ==============================================================
-            * Chama o model que ira implementar a interface IdentityInterface 
+            * Chama o model que ira implementar a interface IdentityInterface
             * e os métodos de autenticação.
             */
             'identityClass' => 'app\modules\admin\models\User',
@@ -92,13 +92,13 @@ if (YII_ENV_DEV) {
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
-        'allowedIPs' => ['127.0.0.1', '::1'],
+        'allowedIPs' => ['127.0.0.1', '::1', '*'],
     ];
 
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
-        'allowedIPs' => ['127.0.0.1', '::1'],
+        'allowedIPs' => ['127.0.0.1', '::1', '*'],
     ];
 }
 
