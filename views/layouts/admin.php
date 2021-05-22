@@ -41,7 +41,8 @@ AdminAsset::register($this);
         'template' => '<a href="{url}" class="href_class">{label}</a>',
         'items' => [
             ['label' => '<span class="glyphicon glyphicon-home"></span> Home', 'url' => ['/site/index'], 'linkOptions' => ['target' => '_blank']],
-        ]
+        ],
+        ['label' => 'Login', 'url' => ['/site/login']]
     ];
 
     if (!Yii::$app->user->isGuest) {
