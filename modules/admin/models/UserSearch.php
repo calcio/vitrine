@@ -47,6 +47,9 @@ class UserSearch extends User
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => 150,
+            ]
         ]);
 
         $this->load($params);
@@ -61,15 +64,12 @@ class UserSearch extends User
         $query->andFilterWhere([
             'id' => $this->id,
             'status' => $this->status,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            //faz tratamento nos atributos, transformando de Timestamp para o tipo date
+            'FROM_UNIXTIME(created_at, \'%d/%m/%Y\')' => $this->created_at,
+            'FROM_UNIXTIME(updated_at, \'%d/%m/%Y\')' => $this->updated_at
         ]);
 
-        $query->andFilterWhere(['like', 'username', $this->username])
-            ->andFilterWhere(['like', 'authKey', $this->authKey])
-            ->andFilterWhere(['like', 'passwordHash', $this->passwordHash])
-            ->andFilterWhere(['like', 'passwordResetToken', $this->passwordResetToken])
-            ->andFilterWhere(['like', 'email', $this->email]);
+        $query->andFilterWhere(['like', 'username', $this->username]);
 
         return $dataProvider;
     }
