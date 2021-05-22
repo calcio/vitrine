@@ -26,6 +26,11 @@ class User extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE  = 10;
+    const STATUS_ACTIVE_STRING = 'Active';
+    const STATUS_DELETED_STRING = 'Deleted';
+
+    public $confirmPassword = '';
+    public $password = '';
 
     public static function tableName()
     {
@@ -35,10 +40,24 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * @inheritdoc
      */
-    public function behaviors()
+    public function beforeSave($insert)
+    {
+        if ($insert) {
+            $this->generateAuthKey();
+        }
+
+        if (isset(Yii::$app->request->post()['User']['passwordHash'])) {
+            $this->setPassword(Yii::$app->request->post()['User']['passwordHash']);
+        }
+       
+        return parent::beforeSave($insert);
+    }
+
+    public function getStatusUser()
     {
         return [
-            TimestampBehavior::className(),
+            self::STATUS_DELETED => self::STATUS_DELETED_STRING,
+            self::STATUS_ACTIVE => self::STATUS_ACTIVE_STRING,
         ];
     }
 
@@ -48,15 +67,18 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['username', 'authKey', 'passwordHash', 'email', 'created_at', 'updated_at'], 'required'],
-            [['status', 'created_at', 'updated_at'], 'integer'],
+            [['username', 'email', 'passwordHash'], 'filter', 'filter' => 'trim'],
+            [['username', 'passwordHash', 'email'], 'required'],
+            [['status'], 'integer'],
             [['username', 'passwordHash', 'passwordResetToken', 'email'], 'string', 'max' => 255],
-            [['authKey'], 'string', 'max' => 32],
             [['username'], 'unique'],
             [['email'], 'unique'],
             [['passwordResetToken'], 'unique'],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+            //Tratando o scenario resetPassword
+            [['password', 'passwordHash', 'confirmPassword'], 'filter', 'filter' => 'trim', 'on' => 'reset-password'],
+            [['password', 'passwordHash', 'confirmPassword'], 'required', 'on' => 'resetPassword'],
         ];
     }
 
@@ -69,19 +91,21 @@ class User extends ActiveRecord implements IdentityInterface
             'id' => Yii::t('app', 'ID'),
             'username' => Yii::t('app', 'Username'),
             'authKey' => Yii::t('app', 'Auth Key'),
-            'passwordHash' => Yii::t('app', 'Password Hash'),
+            'passwordHash' => Yii::t('app', 'Password'),
             'passwordResetToken' => Yii::t('app', 'Password Reset Token'),
             'email' => Yii::t('app', 'Email'),
             'status' => Yii::t('app', 'Status'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
+            'password' => Yii::t('app', 'Old Password'),
+            'newPassword' => Yii::t('app', 'New Password'),
         ];
     }
 
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['update'] = ['username', 'email'];
+        $scenarios['resetPassword'] = ['password', 'passwordHash', 'confirmPassword'];
 
         return $scenarios;
     }
@@ -237,5 +261,9 @@ class User extends ActiveRecord implements IdentityInterface
         }
 
         return $user->passwordResetToken;
+    }
+
+    public function resetPassword(){
+        
     }
 }
