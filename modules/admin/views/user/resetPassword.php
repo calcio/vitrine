@@ -3,15 +3,13 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-/* @var $this yii\web\View */
-/* @var $model app\modules\admin\models\User */
 
-$this->title = Yii::t('app', 'Update {modelClass}: ', [
+$this->title = Yii::t('app', 'Reset Password {modelClass}: ', [
     'modelClass' => 'User',
 ]) . $model->username;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Users'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->username, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = Yii::t('app', 'Update');
+$this->params['breadcrumbs'][] = Yii::t('app', 'Reset Password');
 ?>
 <div class="user-update">
 
@@ -20,14 +18,14 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
     <div class="user-form">
         <?php $form = ActiveForm::begin(); ?>
 
-        <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
 
-        <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'passwordHash')->passwordInput(['maxlength' => true, 'value' => '']) ?>
 
-        <?= $form->field($model, 'status')->radioList($model->getStatusUser()) ?>
+        <?= $form->field($model, 'confirmPassword')->passwordInput(['maxlength' => true]) ?>
 
         <div class="form-group">
-            <?= Html::submitButton(Yii::t('app', 'Update'), ['class' => 'btn btn-primary']) ?>
+            <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-primary']) ?>
         </div>
 
         <?php ActiveForm::end(); ?>
