@@ -1,7 +1,7 @@
 version: '3.6'
 services:
     vitrine-php:
-        image: yiisoftware/yii2-php:7.1-apache
+        image: yiisoftware/yii2-php:7.4-apache
         container_name: vitrine-php
         volumes:
             - ~/.composer-docker/cache:/root/.composer/cache:delegated
